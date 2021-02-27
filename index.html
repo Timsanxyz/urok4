@@ -42,6 +42,80 @@
 
     newProduct.make25Discount();
 
+
+    //Задание 1.2 - ES5
+    function Posts(author, text, date){
+        this.author = author;
+        this.text = text;
+        this.date = date;
+    }
+
+    Posts.prototype.edit = function (text){
+        this.text = text;
+    }
+
+    function FirstAttachedPosts(author, text, date){
+        Posts.call(this, author, text, date);
+        this.highlighted = false;
+    }
+
+    FirstAttachedPosts.prototype = Object.create(Posts.prototype);
+    FirstAttachedPosts.prototype.constructor = FirstAttachedPosts;
+
+    FirstAttachedPosts.prototype.makeTextHighlighted = function (){
+        this.highlighted = true;
+    }
+
+    const firstPost = new Posts("admin", "lorem ipsum", "27.02.2021");
+    console.log(firstPost);
+
+    firstPost.edit("edited lorem ipsim");
+    console.log(firstPost);
+
+    const firstAttachedPost = new FirstAttachedPosts("admin", "lorem lorem", "28.02.2021");
+    console.log(firstAttachedPost);
+
+    firstAttachedPost.makeTextHighlighted();
+    console.log(firstAttachedPost);
+
+
+    //Задание 1.2 - ES6
+    class NewPosts{
+        constructor(author, text, date){
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+        edit(text){
+            this.text = text;
+        }
+
+    }
+
+    class NewAttachedP extends NewPosts{
+        constructor(author,text,date) {
+            super(author,text,date);
+            this.highlighted = false;
+        }
+        makeHighlighted(){
+            this.highlighted = true;
+        }
+    }
+
+    const post2 = new NewPosts("ES6", "lorem ipsss", "yesterday");
+    console.log(post2);
+
+    post2.edit("after edit text");
+    console.log(post2);
+
+    const attached2 = new NewAttachedP("ES6 - 2", "Lorem isplum", "tomorrow");
+    console.log(attached2);
+
+    attached2.edit("edited text");
+    attached2.makeHighlighted();
+    console.log(attached2);
+
+
 </script>
 </body>
 </html>
