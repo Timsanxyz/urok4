@@ -25,7 +25,22 @@
     product1.make25PercentDiscount();
 
 
+    //Задание 1.1 ES6
+    class NewProducts{
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+        make25Discount(){
+            this.price = this.price - (this.price / 100 * 25);
+            console.log("Цена со скидкой: " + this.price);
+        }
+    }
 
+    const newProduct = new NewProducts("iphone", 700);
+    console.log(newProduct);
+
+    newProduct.make25Discount();
 
 </script>
 </body>
