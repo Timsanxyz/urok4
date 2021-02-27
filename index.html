@@ -6,8 +6,27 @@
 </head>
 <body>
 <script>
+    'use strict'
 
-    
+    //Задание 1.1 - ES5
+    function Product(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    Product.prototype.make25PercentDiscount = function () {
+       this.price = this.price - (this.price / 100 * 25);
+       console.log("Цена со скидкой: " + this.price);
+    }
+
+    const product1 = new Product("apple watch", 300);
+    console.log(product1);
+
+    product1.make25PercentDiscount();
+
+
+
+
 </script>
 </body>
 </html>
